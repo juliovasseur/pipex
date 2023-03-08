@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Created: 2022/09/27 16:34:31 by jvasseur          #+#    #+#             */
+/*   Updated: 2022/11/05 15:09:48 by jvasseur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include<string.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<stddef.h>
-# include<limits.h>
-# include<fcntl.h>
-# include "Libft/libft.h"
-# include <stdio.h>
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-typedef struct s_pipex {
-	int file_input;
-    int file_output;
-    char *path;
-    int tube[2];
-    char **tab_path;
-}				t_pipex;
-
-
-void	msg_send_error(char *err);
-int send_err_message(char *str);
-
-#endif
+	i = 0;
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}

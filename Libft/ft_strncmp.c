@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Created: 2022/09/27 13:26:18 by jvasseur          #+#    #+#             */
+/*   Updated: 2022/11/05 15:10:25 by jvasseur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include<string.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<stddef.h>
-# include<limits.h>
-# include<fcntl.h>
-# include "Libft/libft.h"
-# include <stdio.h>
-
-typedef struct s_pipex {
-	int file_input;
-    int file_output;
-    char *path;
-    int tube[2];
-    char **tab_path;
-}				t_pipex;
-
-
-void	msg_send_error(char *err);
-int send_err_message(char *str);
-
-#endif
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (*s1 && *s1 == *s2 && n)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	if (n == 0)
+		return (0);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}

@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Created: 2022/09/27 11:29:18 by jvasseur          #+#    #+#             */
+/*   Updated: 2022/11/05 15:10:19 by jvasseur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-# include<string.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<stddef.h>
-# include<limits.h>
-# include<fcntl.h>
-# include "Libft/libft.h"
-# include <stdio.h>
-
-typedef struct s_pipex {
-	int file_input;
-    int file_output;
-    char *path;
-    int tube[2];
-    char **tab_path;
-}				t_pipex;
-
-
-void	msg_send_error(char *err);
-int send_err_message(char *str);
-
-#endif
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		c = c + 32;
+	return (c);
+}

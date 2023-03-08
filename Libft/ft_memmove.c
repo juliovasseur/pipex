@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Created: 2022/10/07 20:39:58 by jvasseur          #+#    #+#             */
+/*   Updated: 2022/11/05 15:09:46 by jvasseur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include<string.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<stddef.h>
-# include<limits.h>
-# include<fcntl.h>
-# include "Libft/libft.h"
-# include <stdio.h>
+void	*ft_memmove( void *dest, const void *src, size_t n)
+{
+	size_t	i;
+	char	*dest2;
+	char	*src2;
 
-typedef struct s_pipex {
-	int file_input;
-    int file_output;
-    char *path;
-    int tube[2];
-    char **tab_path;
-}				t_pipex;
-
-
-void	msg_send_error(char *err);
-int send_err_message(char *str);
-
-#endif
+	if (!dest && !src && n != 0)
+		return (NULL);
+	i = 0;
+	dest2 = (char *) dest;
+	src2 = (char *) src;
+	if (dest > src)
+	{
+		while (n > 0)
+		{
+			n--;
+			dest2[n] = src2[n];
+		}
+		return (dest);
+	}
+	while (i < n)
+	{
+			dest2[i] = src2[i];
+			i++;
+	}
+	return (dest);
+}

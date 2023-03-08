@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Created: 2022/09/27 16:56:45 by jvasseur          #+#    #+#             */
+/*   Updated: 2022/11/05 15:10:25 by jvasseur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include<string.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<stddef.h>
-# include<limits.h>
-# include<fcntl.h>
-# include "Libft/libft.h"
-# include <stdio.h>
+char	*ft_strnstr(const char *big, const char *little, size_t n)
+{
+	size_t	i;
+	int		j;
 
-typedef struct s_pipex {
-	int file_input;
-    int file_output;
-    char *path;
-    int tube[2];
-    char **tab_path;
-}				t_pipex;
-
-
-void	msg_send_error(char *err);
-int send_err_message(char *str);
-
-#endif
+	i = 0;
+	if (n == 0 && !big)
+		return (NULL);
+	if (little[i] == '\0')
+		return ((char *) big);
+	while (big[i] != '\0' && i < n)
+	{
+		j = 0;
+		while (little[j] == big[i + j] && i + j < n)
+		{
+			if (little[j + 1] == '\0')
+				return ((char *) &big[i]);
+			j++;
+		}
+		i++;
+	}	
+	return (NULL);
+}		
