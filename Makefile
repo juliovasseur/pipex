@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+         #
+#    By: jules <jules@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 17:09:26 by jvasseur          #+#    #+#              #
-#    Updated: 2023/03/08 16:48:43 by jvasseur         ###   ########.fr        #
+#    Updated: 2023/03/11 02:22:48 by jules            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = pipex
 
-SRC = pipex.c send_error.c
+SRC = pipex.c send_error.c program.c
 
-LIBFT = -lXext -lX11 -lm -lz
+LIBFT = -lm
 
 MAKE = make -C
 

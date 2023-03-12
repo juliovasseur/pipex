@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvasseur <jvasseur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 04:51:13 by jules             #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:17 by jvasseur         ###   ########.fr       */
+/*   Updated: 2023/03/11 03:26:25 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 # include<string.h>
 # include<stdlib.h>
+# include <sys/wait.h>
 # include<unistd.h>
 # include<stddef.h>
 # include<limits.h>
 # include<fcntl.h>
 # include "Libft/libft.h"
 # include <stdio.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 
 typedef struct s_pipex {
 	int file_input;
@@ -28,10 +31,13 @@ typedef struct s_pipex {
     char *path;
     int tube[2];
     char **tab_path;
+    char *cmd;
+    char **arg_cmd;
 }				t_pipex;
 
 
 void	msg_send_error(char *err);
-int send_err_message(char *str);
-
+int	msg_write_error(char *err);
+void    child_prog(t_pipex *pipex, char **argv, char **envp);
+void	second_child_prog(t_pipex *pipex, char **argv, char **envp);
 #endif
